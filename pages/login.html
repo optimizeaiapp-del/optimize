@@ -426,7 +426,16 @@
                 window.location.href = '../tool.html';
               }
             } catch (error) {
-              errorMessage.textContent = error.message || 'An error occurred during sign up. Please try again.';
+              // Check if account already exists
+              const errorMsg = error.message || '';
+              if (errorMsg.toLowerCase().includes('already registered') || 
+                  errorMsg.toLowerCase().includes('user already exists') ||
+                  errorMsg.toLowerCase().includes('email already registered') ||
+                  errorMsg.toLowerCase().includes('already exists')) {
+                errorMessage.textContent = 'Your account already exists. Please sign in.';
+              } else {
+                errorMessage.textContent = errorMsg || 'An error occurred during sign up. Please try again.';
+              }
               errorMessage.classList.add('show');
               submitBtn.textContent = 'Sign Up';
               submitBtn.disabled = false;
