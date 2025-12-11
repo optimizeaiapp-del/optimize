@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Use – OptimizeAI</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .page-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .page-header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      background: var(--color-bg-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-header p {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .guide-section {
+      margin-bottom: 40px;
+    }
+    .guide-section h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0 0 16px;
+      color: var(--color-text);
+    }
+    .guide-section h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--color-text);
+    }
+    .guide-section p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .guide-section ul {
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .tip-box {
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--color-primary);
+      margin: 24px 0;
+    }
+    .tip-box p {
+      margin: 0;
+      font-weight: 500;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 32px;
+      transition: color 0.15s ease;
+    }
+    .back-link:hover {
+      color: var(--color-primary-hover);
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <a href="../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+        <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#logoGradient1)"/>
+          <path d="M2 17L12 22L22 17V12L12 17L2 12V17Z" fill="url(#logoGradient2)"/>
+          <defs>
+            <linearGradient id="logoGradient1" x1="2" y1="7" x2="22" y2="7" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#667eea"/>
+              <stop offset="100%" stop-color="#764ba2"/>
+            </linearGradient>
+            <linearGradient id="logoGradient2" x1="2" y1="14.5" x2="22" y2="14.5" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#764ba2"/>
+              <stop offset="100%" stop-color="#667eea"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>OptimizeAI</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-content">
+      <a href="../index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Home
+      </a>
+
+      <div class="page-header">
+        <h1>How to Use OptimizeAI</h1>
+        <p>Detailed guide to getting the most out of OptimizeAI</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Teacher Profile Selection</h2>
+        <h3>Using Preset Profiles</h3>
+        <p>We offer several preset teacher profiles based on common marking styles. Select the one that best matches your teacher:</p>
+        <ul>
+          <li><strong>Ms. Frank:</strong> Loves artistic projects, is an easy marker</li>
+          <li><strong>Mr. Chen:</strong> Very strict marker and rarely gives high grades</li>
+          <li><strong>Ms. Patel:</strong> Focuses on creativity and originality, values effort</li>
+          <li><strong>Mr. Thompson:</strong> Emphasizes structure and clarity, deducts for grammar errors</li>
+          <li><strong>Ms. Rodriguez:</strong> Values evidence and citations, strict about sources</li>
+          <li><strong>Mr. Kim:</strong> Likes detailed explanations, wants thorough analysis</li>
+          <li><strong>Ms. Williams:</strong> Appreciates personal voice and unique perspectives</li>
+          <li><strong>Mr. Davis:</strong> Strict about deadlines, values organization and presentation</li>
+        </ul>
+        <p>You can add additional notes about your teacher's preferences in the "Additional Notes" field that appears after selection.</p>
+
+        <h3>Creating a Custom Profile</h3>
+        <p>If none of the preset profiles match your teacher, select "Other":</p>
+        <ul>
+          <li>Enter your teacher's name (e.g., "Mr. Smith" or "Dr. Johnson")</li>
+          <li>Describe their marking style in detail (e.g., "Very strict marker, deducts for vague details, wants perfect structure")</li>
+          <li>The more specific you are, the better the feedback will be</li>
+        </ul>
+      </div>
+
+      <div class="guide-section">
+        <h2>Assignment Instructions</h2>
+        <p>You can provide assignment instructions in two ways:</p>
+        <ul>
+          <li><strong>Text:</strong> Paste the assignment instructions directly into the textarea</li>
+          <li><strong>Image:</strong> Upload a photo of the rubric or assignment sheet</li>
+        </ul>
+        <div class="tip-box">
+          <p>💡 Tip: If you have both a rubric and written instructions, include both for the most comprehensive analysis.</p>
+        </div>
+      </div>
+
+      <div class="guide-section">
+        <h2>Your Draft</h2>
+        <p>Submit your work in one of these formats:</p>
+        <ul>
+          <li><strong>Text:</strong> Paste your written assignment</li>
+          <li><strong>Image:</strong> Upload a photo of your artwork, project, or handwritten work</li>
+        </ul>
+        <p>The AI uses advanced vision capabilities to understand visual content, not just extract text. This makes it perfect for analyzing artwork, diagrams, and visual projects.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Understanding Your Analysis</h2>
+        <h3>Grade Estimate</h3>
+        <p>The grade estimate is based on your teacher's marking style and the assignment requirements. Click "Explain Results" to see a detailed breakdown of how the grade was calculated.</p>
+
+        <h3>Feedback Categories</h3>
+        <p>Feedback is organized by category to help you understand what to improve:</p>
+        <ul>
+          <li><strong>Structure:</strong> Organization, flow, and logical progression</li>
+          <li><strong>Clarity:</strong> How clearly your ideas are expressed</li>
+          <li><strong>Evidence:</strong> Use of examples, citations, and supporting details</li>
+          <li><strong>Style:</strong> Writing style, voice, and tone</li>
+          <li><strong>Requirements:</strong> How well you met the assignment criteria</li>
+        </ul>
+      </div>
+
+      <div class="guide-section">
+        <h2>Generate Rewrite</h2>
+        <h3>Output Format</h3>
+        <p>Choose how you want the rewrite formatted:</p>
+        <ul>
+          <li><strong>Essay Format:</strong> Well-structured essay with introduction, body paragraphs, and conclusion</li>
+          <li><strong>Paragraph Format:</strong> Flowing paragraphs with smooth transitions</li>
+          <li><strong>Bullet Points:</strong> Structured list with clear, concise points</li>
+          <li><strong>Other:</strong> Describe your preferred format (e.g., "numbered list", "outline format")</li>
+        </ul>
+
+        <h3>Rewrite Strength</h3>
+        <p>Adjust the slider to control how much the AI changes your work:</p>
+        <ul>
+          <li><strong>Light (1-1.5):</strong> Gentle polish while maintaining your original voice</li>
+          <li><strong>Balanced (1.5-2.5):</strong> Clear rewrite with improvements to structure and clarity</li>
+          <li><strong>Max (2.5-3):</strong> Full makeover with significant improvements</li>
+        </ul>
+        <div class="tip-box">
+          <p>💡 Tip: Start with "Balanced" and adjust based on how much change you want. You can always refine with feedback.</p>
+        </div>
+      </div>
+
+      <div class="guide-section">
+        <h2>Refining with Feedback</h2>
+        <p>If you're not satisfied with the analysis or rewrite, use the feedback section:</p>
+        <ul>
+          <li>Be specific about what you want to change</li>
+          <li>Mention particular sections or aspects you'd like improved</li>
+          <li>You can refine multiple times until you're happy</li>
+        </ul>
+        <p>Example feedback: "Make the introduction more engaging" or "Add more evidence to support the third point"</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Be as detailed as possible when describing your teacher's marking style</li>
+          <li>Include the full rubric or assignment instructions for best results</li>
+          <li>Review the feedback carefully and use it to learn, not just to get a better grade</li>
+          <li>Remember to check your institution's academic integrity policies</li>
+          <li>Use OptimizeAI as a learning tool to understand what makes good writing</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li class="support-contact">
+            <span class="support-label">Having issues?</span>
+            <a href="contact.html" class="support-email">optimizeaiapp@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="academic-integrity.html">Academic Integrity</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> OptimizeAI. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OptimizeAI – Teacher-Specific Assignment Optimizer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="translations.js"></script>
+</head>
+<body>
+  <!-- TOP NAV -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+        <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#logoGradient1)"/>
+        <path d="M2 17L12 22L22 17V12L12 17L2 12V17Z" fill="url(#logoGradient2)"/>
+        <defs>
+          <linearGradient id="logoGradient1" x1="2" y1="7" x2="22" y2="7" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#667eea"/>
+            <stop offset="100%" stop-color="#764ba2"/>
+          </linearGradient>
+          <linearGradient id="logoGradient2" x1="2" y1="14.5" x2="22" y2="14.5" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#764ba2"/>
+            <stop offset="100%" stop-color="#667eea"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span>OptimizeAI</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="pages/features.html">Features</a>
+      <a href="pages/how-it-works.html">How It Works</a>
+      <a href="pages/contact.html">Contact</a>
+      <div id="authButtons" class="auth-buttons">
+        <a href="pages/login.html" class="nav-link-login">Login</a>
+        <a href="pages/login.html" class="nav-link-cta">Get Started</a>
+      </div>
+      <div id="profileMenu" class="profile-menu" style="display: none;">
+        <button class="profile-avatar" id="profileAvatar">
+          <span id="profileInitials">U</span>
+        </button>
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="profile-dropdown-email" id="profileEmail">user@example.com</div>
+          <div class="profile-dropdown-divider"></div>
+          <a href="pages/account.html" class="profile-dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 8C10.2091 8 12 6.20914 12 4C12 1.79086 10.2091 0 8 0C5.79086 0 4 1.79086 4 4C4 6.20914 5.79086 8 8 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 16C2 13.7909 4.68629 12 8 12C11.3137 12 14 13.7909 14 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Account details
+          </a>
+          <div class="profile-dropdown-item language-item" id="languageItem">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 8H14M8 2C9.5 4.5 10.5 6 11 8C10.5 10 9.5 11.5 8 14M8 2C6.5 4.5 5.5 6 5 8C5.5 10 6.5 11.5 8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span id="currentLanguage">English</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="dropdown-arrow">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="language-dropdown" id="languageDropdown">
+              <div class="language-header">
+                <span>Site language</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="info-icon">
+                  <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M7 4V7M7 10H7.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="language-option" data-lang="en">
+                <span>English</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="check-icon">
+                  <path d="M13 4L6 11L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="language-option" data-lang="es">
+                <span>Español</span>
+              </div>
+              <div class="language-option" data-lang="fr">
+                <span>Français</span>
+              </div>
+              <div class="language-option" data-lang="de">
+                <span>Deutsch</span>
+              </div>
+              <div class="language-option" data-lang="zh">
+                <span>中文</span>
+              </div>
+              <div class="language-option" data-lang="ja">
+                <span>日本語</span>
+              </div>
+            </div>
+          </div>
+          <a href="pages/contact.html" class="profile-dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 5L8 9L14 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span id="contactUs">Contact us</span>
+          </a>
+          <div class="profile-dropdown-divider"></div>
+          <a href="#" class="profile-dropdown-item" id="logoutBtn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 14H3C2.44772 14 2 13.5523 2 13V3C2 2.44772 2.44772 2 3 2H6M10 12L14 8M14 8L10 4M14 8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span id="logOut">Log out</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- MAIN TOOL AREA -->
+    <section class="tool-section">
+      <div class="content-wrapper">
+        <!-- LEFT PANEL: INPUTS -->
+        <div class="card left-panel">
+          <div class="card-section">
+            <h2 id="teacherProfile">Teacher Profile</h2>
+            <div class="custom-select-wrapper">
+              <div class="custom-select" id="teacherSelectCustom">
+                <div class="custom-select-trigger">
+                  <span class="select-placeholder" id="selectTeacher">Select a teacher that matches your teacher's marking style...</span>
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L6 6L11 1" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="custom-select-options" id="teacherSelectOptions">
+                  <div class="custom-option" data-value="ms-frank" data-name="Ms. Frank" data-desc="Loves artistic projects, is an easy marker" data-initials="MF">
+                    <div class="teacher-avatar teacher-avatar-1">MF</div>
+                    <div class="teacher-info">
+                      <span class="teacher-name">Ms. Frank</span>
+                      <span class="teacher-desc">Loves artistic projects, is an easy marker</span>
+                    </div>
+                  </div>
+                  <div class="custom-option" data-value="mr-chen" data-name="Mr. Chen" data-desc="Very strict marker and rarely gives high grades" data-initials="MC">
+                    <div class="teacher-avatar teacher-avatar-2">MC</div>
+                    <div class="teacher-info">
+                      <span class="teacher-name">Mr. Chen</span>
+                      <span class="teacher-desc">Very strict marker and rarely gives high grades</span>
+                    </div>
+                  </div>
+                  <div class="custom-option" data-value="ms-patel" data-name="Ms. Patel" data-desc="Focuses on creativity and originality, values effort" data-initials="MP">
+                    <div class="teacher-avatar teacher-avatar-3">MP</div>
+                    <div class="teacher-info">
+                      <span class="teacher-name">Ms. Patel</span>
+                      <span class="teacher-desc">Focuses on creativity and originality, values effort</span>
+                    </div>
+                  </div>
+                  <div class="custom-option" data-value="mr-thompson" data-name="Mr. Thompson" data-desc="Emphasizes structure and clarity, deducts for grammar errors" data-initials="MT">
+                    <div class="teacher-avatar teacher-avatar-4">MT</div>
+                    <div class="teacher-info">
+                      <span class="teacher-name">Mr. Thompson</span>
+                      <span class="teacher-desc">Emphasizes structure and clarity, deducts for grammar errors</span>
+                    </div>
+                  </div>
+                  <div class="custom-option" data-value="ms-rodriguez" data-name="Ms. Rodriguez" data-desc="Values evidence and citations, strict about sources" data-initials="MR">
+                    <div class="teacher-avatar teacher-avatar-5">MR</div>
+                    <div class="teacher-info">
+                      <span class="teacher-name">Ms. Rodriguez</span>
+                      <span class="teacher-desc">Values evidence and citations, strict about sources</span>
+                    </div>
+                  </div>
+                  <div class="custom-option" data-value="mr-kim" data-name="Mr. Kim" data-desc="Likes detailed explanations, wants thorough analysis" data-initials="MK">
+                    <div class="teacher-avatar teacher-avatar-6">MK</div>
+                    <div class="teacher-info">
+                      <span class="teacher-name">Mr. Kim</span>
+                      <span class="teacher-desc">Likes detailed explanations, wants thorough analysis</span>
+                    </div>
+                  </div>
+                  <div class="custom-option" data-value="ms-williams" data-name="Ms. Williams" data-desc="Appreciates personal voice and unique perspectives" data-initials="MW">
+                    <div class="teacher-avatar teacher-avatar-7">MW</div>
+                    <div class="teacher-info">
+                      <span class="teacher-name">Ms. Williams</span>
+                      <span class="teacher-desc">Appreciates personal voice and unique perspectives</span>
+                    </div>
+                  </div>
+                  <div class="custom-option" data-value="mr-davis" data-name="Mr. Davis" data-desc="Strict about deadlines, values organization and presentation" data-initials="MD">
+                    <div class="teacher-avatar teacher-avatar-8">MD</div>
+                    <div class="teacher-info">
+                      <span class="teacher-name">Mr. Davis</span>
+                      <span class="teacher-desc">Strict about deadlines, values organization and presentation</span>
+                    </div>
+                  </div>
+                  <div class="custom-option" data-value="other" data-name="Other" data-desc="" data-initials="+">
+                    <div class="teacher-avatar teacher-avatar-other">+</div>
+                    <div class="teacher-info">
+                      <span class="teacher-name">Other</span>
+                      <span class="teacher-desc">Describe your teacher's marking style</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <select id="teacherSelect" class="teacher-select-hidden" style="display: none;">
+                <option value=""></option>
+                <option value="ms-frank" data-name="Ms. Frank" data-desc="Loves artistic projects, is an easy marker">Ms. Frank</option>
+                <option value="mr-chen" data-name="Mr. Chen" data-desc="Very strict marker and rarely gives high grades">Mr. Chen</option>
+                <option value="ms-patel" data-name="Ms. Patel" data-desc="Focuses on creativity and originality, values effort">Ms. Patel</option>
+                <option value="mr-thompson" data-name="Mr. Thompson" data-desc="Emphasizes structure and clarity, deducts for grammar errors">Mr. Thompson</option>
+                <option value="ms-rodriguez" data-name="Ms. Rodriguez" data-desc="Values evidence and citations, strict about sources">Ms. Rodriguez</option>
+                <option value="mr-kim" data-name="Mr. Kim" data-desc="Likes detailed explanations, wants thorough analysis">Mr. Kim</option>
+                <option value="ms-williams" data-name="Ms. Williams" data-desc="Appreciates personal voice and unique perspectives">Ms. Williams</option>
+                <option value="mr-davis" data-name="Mr. Davis" data-desc="Strict about deadlines, values organization and presentation">Mr. Davis</option>
+                <option value="other" data-name="Other" data-desc="">Other</option>
+              </select>
+            </div>
+            <div id="teacherCustomSection" class="teacher-custom-section" style="display: none;">
+              <label for="teacherCustomName" class="teacher-notes-label" id="customTeacherNameLabel">Teacher's Name</label>
+              <input
+                type="text"
+                id="teacherCustomName"
+                placeholder="Example: Mr. Smith, Ms. Johnson..."
+                class="teacher-name-input"
+              />
+              <label for="teacherCustom" class="teacher-notes-label" style="margin-top: 12px;" id="customTeacherDescLabel">Describe Your Teacher's Marking Style</label>
+              <textarea
+                id="teacherCustom"
+                placeholder="Example: Very strict marker, deducts for vague details, wants perfect structure..."
+                rows="3"
+              ></textarea>
+            </div>
+            <div id="teacherNotesSection" class="teacher-notes-section" style="display: none;">
+              <label for="teacherNotes" class="teacher-notes-label" id="additionalNotesLabel">Additional Notes (Optional)</label>
+              <textarea
+                id="teacherNotes"
+                placeholder="Add any extra details about this teacher's marking style..."
+                rows="2"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="card-section">
+            <div class="section-header">
+              <h2 id="assignmentInstructions">Assignment Instructions / Rubric</h2>
+              <label for="instructionsFile" class="upload-btn">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 11V5M5 8L8 5L11 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 13H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span id="uploadPhoto">Upload Photo</span>
+                <input type="file" id="instructionsFile" accept="image/*" style="display: none;" onchange="handleImageUpload('instructions', this.files[0])">
+              </label>
+            </div>
+            <div id="instructionsImagePreview" class="image-preview" style="display: none;">
+              <img id="instructionsImage" src="" alt="Instructions preview">
+              <button onclick="removeImage('instructions')" class="remove-image-btn">×</button>
+            </div>
+            <textarea
+              id="instructions"
+              placeholder="Paste the question, rubric, or assignment instructions here... Or upload a photo of the rubric/instructions above."
+            ></textarea>
+          </div>
+
+          <div class="card-section">
+            <div class="section-header">
+              <h2 id="yourDraft">Your Draft</h2>
+              <label for="draftFile" class="upload-btn">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 11V5M5 8L8 5L11 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 13H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span id="uploadPhoto">Upload Photo</span>
+                <input type="file" id="draftFile" accept="image/*" style="display: none;" onchange="handleImageUpload('draft', this.files[0])">
+              </label>
+            </div>
+            <div id="draftImagePreview" class="image-preview" style="display: none;">
+              <img id="draftImage" src="" alt="Draft preview">
+              <button onclick="removeImage('draft')" class="remove-image-btn">×</button>
+            </div>
+            <textarea
+              id="pasteDraft"
+              placeholder="Paste your assignment draft here... Or upload a photo of your artwork/project above."
+            ></textarea>
+          </div>
+
+          <button onclick="analyze()" class="analyze-btn">
+            <span id="analyzeAssignment">Analyze Assignment</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- RIGHT PANEL: OUTPUT -->
+        <div class="card right-panel">
+          <h2 id="analysis">Analysis</h2>
+          
+          <!-- GRADE DISPLAY (hidden initially) -->
+          <div id="gradeDisplay" class="grade-display" style="display: none;">
+            <div class="grade-circle">
+              <span id="gradePercentage" class="grade-percentage">--</span>
+              <span class="grade-label" id="gradeLabel">Grade</span>
+            </div>
+            <button onclick="explainGrade()" class="explain-btn">
+              <span id="explainResults">Explain Results</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <div id="output" class="output-box placeholder">
+            <p id="outputPlaceholder">Your results will appear here…</p>
+          </div>
+
+          <!-- REWRITE SECTION (merged slider and button) -->
+          <div class="rewrite-section">
+            <div class="rewrite-header">
+              <div class="rewrite-header-left">
+                <span class="rewrite-label" id="rewriteStrength">Rewrite strength</span>
+                <span id="strengthLabel" class="slider-value">Balanced</span>
+              </div>
+              <button onclick="rewriteOnly()" class="rewrite-btn-merged">
+                <span id="generateRewrite">Generate Rewrite</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="slider-wrapper">
+              <span class="slider-tick-label">Light</span>
+              <input
+                type="range"
+                id="rewriteStrength"
+                min="1"
+                max="3"
+                step="0.1"
+                value="2"
+              />
+              <span class="slider-tick-label">Max</span>
+            </div>
+            <p class="slider-help">
+              <strong>Light</strong> = gentle polish, <strong>Balanced</strong> = clear re-write,
+              <strong>Max</strong> = full makeover.
+            </p>
+            
+            <div class="format-selector">
+              <label for="rewriteFormat" class="format-label" id="outputFormat">Output Format</label>
+              <select id="rewriteFormat" class="format-select">
+                <option value="essay">Essay Format</option>
+                <option value="paragraph">Paragraph Format</option>
+                <option value="bullets">Bullet Points</option>
+                <option value="other">Other</option>
+              </select>
+              <div id="formatCustomSection" class="format-custom-section" style="display: none;">
+                <label for="formatCustom" class="format-custom-label" id="describeFormatLabel">Describe the format you want</label>
+                <textarea
+                  id="formatCustom"
+                  placeholder="Example: numbered list, outline format, dialogue format, etc."
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- FEEDBACK SECTION (hidden initially) -->
+          <div id="feedbackSection" class="feedback-section" style="display: none;">
+            <h3 id="refineAnalysis">Refine Analysis</h3>
+            <p class="feedback-help">Not satisfied with the results? Provide feedback to improve the analysis.</p>
+            <textarea
+              id="feedback"
+              placeholder="Example: Focus more on structure, add more specific examples, emphasize clarity issues..."
+              rows="3"
+            ></textarea>
+            <button onclick="refineAnalysis()" class="refine-btn">
+              <span>Refine with Feedback</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (simple QuillBot-ish) -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li class="support-contact">
+            <span class="support-label">Having issues?</span>
+            <a href="pages/contact.html" class="support-email">optimizeaiapp@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#" onclick="event.preventDefault(); showLegalModal('terms'); return false;">Terms of Service</a></li>
+          <li><a href="#" onclick="event.preventDefault(); showLegalModal('privacy'); return false;">Privacy Policy</a></li>
+          <li><a href="#" onclick="event.preventDefault(); showLegalModal('integrity'); return false;">Academic Integrity</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> OptimizeAI. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal" style="display: none;">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <button class="modal-close" onclick="closeModal()">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <p id="modalText"></p>
+      </div>
+      <div class="modal-footer">
+        <button onclick="closeModal()" class="modal-btn">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supabase Client Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  
+  <script src="script.js"></script>
+  <script>
+    // Check if user is logged in with Supabase
+    async function checkAuth() {
+      try {
+        // Check for existing session
+        const sessionStr = localStorage.getItem('supabase_session');
+        if (sessionStr) {
+          const session = JSON.parse(sessionStr);
+          // Verify session is still valid
+          const { data: { user }, error } = await supabaseClient.auth.getUser();
+          
+          if (error || !user) {
+            // Session invalid, clear and redirect
+            localStorage.removeItem('supabase_session');
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = 'pages/login.html';
+            return;
+          }
+          
+          // User is authenticated
+          const authButtons = document.getElementById('authButtons');
+          const profileMenu = document.getElementById('profileMenu');
+          
+          if (authButtons) authButtons.style.display = 'none';
+          if (profileMenu) profileMenu.style.display = 'block';
+          
+          // Set profile initials
+          const fullName = user.user_metadata?.full_name || user.email?.split('@')[0] || 'U';
+          const initials = fullName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+          if (document.getElementById('profileInitials')) {
+            document.getElementById('profileInitials').textContent = initials;
+          }
+          
+          // Set profile email
+          const userEmail = user.email || 'user@example.com';
+          const profileEmail = document.getElementById('profileEmail');
+          if (profileEmail) {
+            profileEmail.textContent = userEmail;
+          }
+          
+          // Update localStorage for compatibility
+          localStorage.setItem('userLoggedIn', 'true');
+          localStorage.setItem('userEmail', userEmail);
+          localStorage.setItem('userName', fullName);
+        } else {
+          // No session found, redirect to login
+          window.location.href = 'pages/login.html';
+        }
+      } catch (error) {
+        console.error('Auth check error:', error);
+        window.location.href = 'pages/login.html';
+      }
+    }
+
+    // Profile dropdown toggle
+    const profileAvatar = document.getElementById('profileAvatar');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const profileMenu = document.getElementById('profileMenu');
+    
+    // Shared variables for dropdown state
+    let dropdownOpen = false;
+    let isMobile = window.innerWidth <= 640;
+    let dropdownClone = null;
+
+    // Logout functionality - defined before dropdown code so it can be used in cloned dropdown
+    const handleLogout = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Clear all user data
+      localStorage.removeItem('userLoggedIn');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userName');
+      localStorage.removeItem('userPassword');
+      
+      // Close dropdown if open
+      const clone = document.getElementById('profileDropdownClone');
+      if (clone) {
+        clone.remove();
+      }
+      if (profileDropdown) {
+        profileDropdown.classList.remove('show');
+        profileDropdown.style.display = 'none';
+      }
+      dropdownOpen = false;
+      dropdownClone = null;
+      
+      // Redirect to login page
+      window.location.href = 'pages/login.html';
+    };
+    
+    if (profileAvatar && profileDropdown && profileMenu) {
+      const getDropdownPosition = () => {
+        const avatarRect = profileAvatar.getBoundingClientRect();
+        return {
+          top: avatarRect.bottom + 8,
+          right: window.innerWidth - avatarRect.right
+        };
+      };
+
+      const handleToggle = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdownOpen = !dropdownOpen;
+        
+        if (dropdownOpen) {
+          if (isMobile && !dropdownClone) {
+            // On mobile, clone and append to body to escape stacking contexts
+            dropdownClone = profileDropdown.cloneNode(true);
+            dropdownClone.id = 'profileDropdownClone';
+            dropdownClone.style.position = 'fixed';
+            dropdownClone.style.zIndex = '999999';
+            dropdownClone.style.display = 'block';
+            const pos = getDropdownPosition();
+            dropdownClone.style.top = pos.top + 'px';
+            dropdownClone.style.right = pos.right + 'px';
+            dropdownClone.style.left = 'auto';
+            document.body.appendChild(dropdownClone);
+            
+            // Add event listeners to cloned items
+            const items = dropdownClone.querySelectorAll('.profile-dropdown-item');
+            items.forEach(item => {
+              const href = item.getAttribute('href');
+              if (href === '#') {
+                // This is the logout button
+                item.addEventListener('click', handleLogout);
+                item.addEventListener('touchend', handleLogout);
+              } else if (href) {
+                // This is a navigation link
+                item.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.location.href = href;
+                });
+                item.addEventListener('touchend', (e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.location.href = href;
+                });
+              }
+            });
+            
+            // Add language selection handler to cloned dropdown (mobile - inline expansion)
+            const clonedLanguageItem = dropdownClone.querySelector('.language-item');
+            const clonedLanguageDropdown = dropdownClone.querySelector('.language-dropdown');
+            if (clonedLanguageItem && clonedLanguageDropdown) {
+              // On mobile, make it expand inline within the dropdown (static positioning)
+              clonedLanguageDropdown.style.position = 'static';
+              clonedLanguageDropdown.style.display = 'none';
+              clonedLanguageDropdown.style.width = '100%';
+              clonedLanguageDropdown.style.maxWidth = '100%';
+              clonedLanguageDropdown.style.left = 'auto';
+              clonedLanguageDropdown.style.right = 'auto';
+              clonedLanguageDropdown.style.top = 'auto';
+              
+              clonedLanguageItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                const isOpen = clonedLanguageDropdown.classList.contains('show');
+                
+                if (!isOpen) {
+                  clonedLanguageDropdown.classList.add('show');
+                  clonedLanguageDropdown.style.display = 'block';
+                  clonedLanguageDropdown.style.visibility = 'visible';
+                  clonedLanguageDropdown.style.opacity = '1';
+                } else {
+                  clonedLanguageDropdown.classList.remove('show');
+                  clonedLanguageDropdown.style.display = 'none';
+                }
+              });
+              
+              // Update selected language in cloned dropdown
+              const clonedUpdateSelected = (selectedLang) => {
+                const clonedLanguageOptions = clonedLanguageDropdown.querySelectorAll('.language-option');
+                clonedLanguageOptions.forEach(opt => {
+                  const optLang = opt.getAttribute('data-lang');
+                  if (optLang === selectedLang) {
+                    opt.classList.add('selected');
+                  } else {
+                    opt.classList.remove('selected');
+                  }
+                });
+              };
+              // Get saved language from localStorage
+              const clonedSavedLang = localStorage.getItem('selectedLanguage') || 'en';
+              clonedUpdateSelected(clonedSavedLang);
+              
+              const clonedLanguageOptions = clonedLanguageDropdown.querySelectorAll('.language-option');
+              clonedLanguageOptions.forEach(option => {
+                // Add both click and touchend for better mobile support
+                const handleLanguageSelect = (e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  e.stopImmediatePropagation();
+                  const lang = option.getAttribute('data-lang');
+                  const span = option.querySelector('span');
+                  const langText = span ? span.textContent : option.textContent;
+                  
+                  // Save language to localStorage
+                  localStorage.setItem('selectedLanguage', lang);
+                  
+                  // Update current language display immediately
+                  const clonedCurrentLanguageSpan = clonedLanguageItem.querySelector('span');
+                  if (clonedCurrentLanguageSpan) {
+                    clonedCurrentLanguageSpan.textContent = langText;
+                  }
+                  
+                  // Update visual selection
+                  clonedUpdateSelected(lang);
+                  
+                  // Close dropdown
+                  clonedLanguageDropdown.classList.remove('show');
+                  clonedLanguageDropdown.style.display = 'none';
+                  
+                  // Apply translations immediately
+                  if (typeof applyTranslations === 'function') {
+                    applyTranslations(lang);
+                    // Also refresh after a short delay to ensure everything updates
+                    setTimeout(() => {
+                      window.location.reload();
+                    }, 100);
+                  } else {
+                    // If translations function not available, just refresh
+                    window.location.reload();
+                  }
+                };
+                
+                option.addEventListener('click', handleLanguageSelect);
+                option.addEventListener('touchend', handleLanguageSelect);
+              });
+              
+              // Close language dropdown when clicking outside on mobile
+              const closeClonedLanguageDropdown = (e) => {
+                const target = e.target;
+                const isLanguageItem = clonedLanguageItem.contains(target);
+                const isLanguageDropdown = clonedLanguageDropdown.contains(target);
+                
+                if (!isLanguageItem && !isLanguageDropdown) {
+                  clonedLanguageDropdown.classList.remove('show');
+                  clonedLanguageDropdown.style.display = 'none';
+                }
+              };
+              
+              setTimeout(() => {
+                document.addEventListener('click', closeClonedLanguageDropdown, true);
+                document.addEventListener('touchend', closeClonedLanguageDropdown, true);
+              }, 100);
+            }
+          } else {
+            profileDropdown.classList.add('show');
+            profileDropdown.style.display = 'block';
+            profileDropdown.style.zIndex = '999999';
+            profileDropdown.style.position = 'fixed';
+            const pos = getDropdownPosition();
+            profileDropdown.style.top = pos.top + 'px';
+            profileDropdown.style.right = pos.right + 'px';
+            void profileDropdown.offsetWidth;
+          }
+        } else {
+          if (dropdownClone) {
+            dropdownClone.remove();
+            dropdownClone = null;
+          }
+          profileDropdown.classList.remove('show');
+          profileDropdown.style.display = 'none';
+        }
+      };
+
+      // Use both click and touchstart for better mobile support
+      profileAvatar.addEventListener('click', handleToggle);
+      profileAvatar.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        handleToggle(e);
+      });
+
+      const handleOutsideClick = (e) => {
+        const clickedElement = e.target;
+        // Don't close if clicking on language dropdown
+        const isInLanguageDropdown = clickedElement.closest('.language-dropdown');
+        if (isInLanguageDropdown) {
+          return;
+        }
+        
+        const isInDropdown = profileDropdown.contains(clickedElement) || 
+                            (dropdownClone && dropdownClone.contains(clickedElement)) ||
+                            profileMenu.contains(clickedElement);
+        
+        if (!isInDropdown && dropdownOpen) {
+          dropdownOpen = false;
+          if (dropdownClone) {
+            dropdownClone.remove();
+            dropdownClone = null;
+          }
+          profileDropdown.classList.remove('show');
+          profileDropdown.style.display = 'none';
+        }
+      };
+
+      document.addEventListener('click', handleOutsideClick);
+      document.addEventListener('touchend', handleOutsideClick);
+      
+      // Update mobile detection on resize
+      window.addEventListener('resize', () => {
+        isMobile = window.innerWidth <= 640;
+      });
+    }
+
+    // Add logout handler to original logout button (for desktop)
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', handleLogout);
+      logoutBtn.addEventListener('touchend', handleLogout);
+    }
+
+    // Language selection functionality
+    const languageItem = document.getElementById('languageItem');
+    const languageDropdown = document.getElementById('languageDropdown');
+    
+    if (languageItem && languageDropdown) {
+      // Load saved language
+      const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+      const langMap = {
+        'en': 'English',
+        'es': 'Español',
+        'fr': 'Français',
+        'de': 'Deutsch',
+        'zh': '中文',
+        'ja': '日本語'
+      };
+      const currentLanguageSpan = document.getElementById('currentLanguage');
+      if (currentLanguageSpan && langMap[savedLang]) {
+        currentLanguageSpan.textContent = langMap[savedLang];
+      }
+      
+      languageItem.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        const isOpen = languageDropdown.classList.contains('show');
+        // Close all other dropdowns first
+        document.querySelectorAll('.language-dropdown.show').forEach(dropdown => {
+          if (dropdown !== languageDropdown) {
+            dropdown.classList.remove('show');
+            dropdown.style.display = 'none';
+          }
+        });
+        if (!isOpen) {
+          // Calculate position relative to profile dropdown (to the left, matching QuillBot layout)
+          const profileDropdownEl = document.getElementById('profileDropdown');
+          const profileRect = profileDropdownEl ? profileDropdownEl.getBoundingClientRect() : null;
+          const itemRect = languageItem.getBoundingClientRect();
+          
+          // Position to the left of profile dropdown with clean spacing (210px gap)
+          let leftPosition;
+          let topPosition;
+          
+          if (profileRect) {
+            // Position to the left of the entire profile dropdown
+            leftPosition = profileRect.left - 210;
+            topPosition = profileRect.top;
+            
+            // If it would go off screen on mobile, adjust
+            if (leftPosition < 16) {
+              leftPosition = 16; // Keep it on screen with margin
+            }
+          } else {
+            // Fallback to language item position
+            leftPosition = itemRect.left - 210;
+            topPosition = itemRect.top;
+            if (leftPosition < 16) {
+              leftPosition = 16;
+            }
+          }
+          
+          languageDropdown.style.position = 'fixed';
+          languageDropdown.style.top = topPosition + 'px';
+          languageDropdown.style.left = leftPosition + 'px';
+          languageDropdown.style.right = 'auto';
+          languageDropdown.style.zIndex = '10000000';
+          languageDropdown.classList.add('show');
+          languageDropdown.style.display = 'block';
+          languageDropdown.style.visibility = 'visible';
+          languageDropdown.style.pointerEvents = 'auto';
+        } else {
+          languageDropdown.classList.remove('show');
+          languageDropdown.style.display = 'none';
+        }
+      });
+      
+      // Function to update selected language visual
+      const updateSelectedLanguage = (selectedLang) => {
+        const languageOptions = languageDropdown.querySelectorAll('.language-option');
+        languageOptions.forEach(opt => {
+          const optLang = opt.getAttribute('data-lang');
+          if (optLang === selectedLang) {
+            opt.classList.add('selected');
+            const span = opt.querySelector('span');
+            if (span) {
+              currentLanguageSpan.textContent = span.textContent;
+            }
+          } else {
+            opt.classList.remove('selected');
+          }
+        });
+      };
+      
+      // Set initial selected language
+      updateSelectedLanguage(savedLang);
+      
+      const languageOptions = languageDropdown.querySelectorAll('.language-option');
+      languageOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const lang = option.getAttribute('data-lang');
+          const span = option.querySelector('span');
+          const langText = span ? span.textContent : option.textContent;
+          
+          // Save language to localStorage
+          localStorage.setItem('selectedLanguage', lang);
+          
+          // Update current language display immediately
+          if (currentLanguageSpan) {
+            currentLanguageSpan.textContent = langText;
+          }
+          
+          // Update visual selection
+          updateSelectedLanguage(lang);
+          
+          // Close dropdown
+          languageDropdown.classList.remove('show');
+          languageDropdown.style.display = 'none';
+          
+          // Apply translations immediately
+          if (typeof applyTranslations === 'function') {
+            applyTranslations(lang);
+            // Also refresh after a short delay to ensure everything updates
+            setTimeout(() => {
+              window.location.reload();
+            }, 100);
+          } else {
+            // If translations function not available, just refresh
+            window.location.reload();
+          }
+        });
+      });
+      
+      // Apply translations on page load - multiple times to ensure all elements are translated
+      const applyTranslationsOnLoad = () => {
+        if (typeof applyTranslations === 'function') {
+          applyTranslations(savedLang);
+        }
+      };
+      
+      // Try multiple times to ensure translations apply
+      setTimeout(applyTranslationsOnLoad, 100);
+      setTimeout(applyTranslationsOnLoad, 300);
+      setTimeout(applyTranslationsOnLoad, 500);
+      
+      // Also on DOMContentLoaded if page is still loading
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          setTimeout(applyTranslationsOnLoad, 100);
+          setTimeout(applyTranslationsOnLoad, 300);
+        });
+      }
+      
+      // Apply immediately if DOM is ready
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        applyTranslationsOnLoad();
+      }
+      
+      // Close language dropdown when clicking outside (but not if clicking on language item or dropdown)
+      const closeLanguageDropdown = (e) => {
+        const target = e.target;
+        const isLanguageItem = languageItem.contains(target);
+        const isLanguageDropdown = languageDropdown.contains(target);
+        
+        if (!isLanguageItem && !isLanguageDropdown) {
+          languageDropdown.classList.remove('show');
+          languageDropdown.style.display = 'none';
+        }
+      };
+      
+      // Use a separate event listener with capture to ensure it works
+      setTimeout(() => {
+        document.addEventListener('click', closeLanguageDropdown, true);
+      }, 100);
+    }
+
+    // Check auth on page load
+    checkAuth();
+
+    // Legal modal content
+    const legalContent = {
+      terms: {
+        title: 'Terms of Service',
+        content: `
+          <p><strong>Last updated: January 2025</strong></p>
+          <h4>1. Acceptance of Terms</h4>
+          <p>By accessing and using OptimizeAI, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+          <h4>2. Description of Service</h4>
+          <p>OptimizeAI is an AI-powered tool designed to help students improve their academic assignments by providing personalized feedback and analysis based on teacher-specific marking styles.</p>
+          <h4>3. Academic Integrity</h4>
+          <p>Users are solely responsible for ensuring their use of OptimizeAI complies with their institution's academic integrity policies. OptimizeAI is designed to help students learn and improve, not to bypass the learning process.</p>
+          <h4>4. User Responsibilities</h4>
+          <p>Users agree to use the service only for lawful purposes, not to violate any academic integrity policies, and to provide accurate information when using the service.</p>
+          <h4>5. Limitation of Liability</h4>
+          <p>OptimizeAI is provided "as is" without warranties of any kind. We are not responsible for the accuracy of grade estimates, academic consequences, or any errors in the analysis.</p>
+          <h4>6. Contact</h4>
+          <p>If you have questions about these Terms of Service, please contact us at <a href="mailto:optimizeaiapp@gmail.com" style="color: var(--color-primary);">optimizeaiapp@gmail.com</a>.</p>
+        `
+      },
+      privacy: {
+        title: 'Privacy Policy',
+        content: `
+          <p><strong>Last updated: January 2025</strong></p>
+          <p><strong>🔒 Your privacy is important to us.</strong> We respect your privacy and are committed to protecting your personal information. Your assignments and data are processed securely and are not stored or shared.</p>
+          <h4>1. Information We Collect</h4>
+          <p>When you use OptimizeAI, you may provide assignment instructions, drafts (text or images), teacher profile information, and feedback requests.</p>
+          <h4>2. How We Use Your Information</h4>
+          <p>We use the information you provide solely to process your assignments, generate analysis, provide feedback, and improve our service. We do not use your information for marketing purposes or share it with third parties.</p>
+          <h4>3. Data Storage and Retention</h4>
+          <p><strong>Important:</strong> Your assignments and personal content are <strong>not stored</strong> on our servers. Data is processed in real-time to generate your analysis and is then discarded.</p>
+          <h4>4. Data Security</h4>
+          <p>We implement appropriate technical and organizational measures to protect your information, including secure data transmission using encryption and processing through secure AI services.</p>
+          <h4>5. Contact Us</h4>
+          <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:optimizeaiapp@gmail.com" style="color: var(--color-primary);">optimizeaiapp@gmail.com</a>.</p>
+        `
+      },
+      integrity: {
+        title: 'Academic Integrity',
+        content: `
+          <p><strong>⚠️ IMPORTANT:</strong> Before using OptimizeAI, you must check your institution's academic integrity policies regarding AI assistance. Different schools have different rules, and it is your responsibility to comply with them.</p>
+          <h4>What is Academic Integrity?</h4>
+          <p>Academic integrity means being honest and ethical in your academic work. It involves submitting work that is your own, following your institution's rules about collaboration and assistance, and being transparent about the help you receive.</p>
+          <h4>OptimizeAI as a Learning Tool</h4>
+          <p>OptimizeAI is designed to help you learn and improve your writing skills. It's not meant to replace your own work or thinking. Use feedback to learn, maintain your voice, understand the content, and follow your school's rules.</p>
+          <h4>Best Practices</h4>
+          <p>Always check policies first, use for learning, be transparent if required, don't submit directly without review, and maintain academic honesty. The goal is to learn and grow, not replace your own effort.</p>
+          <h4>Our Commitment</h4>
+          <p>OptimizeAI is committed to supporting academic integrity. We provide this tool to help students learn and improve, not to facilitate academic dishonesty.</p>
+          <h4>Questions?</h4>
+          <p>If you have questions about academic integrity and using OptimizeAI, please contact us at <a href="mailto:optimizeaiapp@gmail.com" style="color: var(--color-primary);">optimizeaiapp@gmail.com</a>.</p>
+        `
+      }
+    };
+
+    function showLegalModal(type) {
+      const content = legalContent[type];
+      if (content) {
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const modalText = document.getElementById('modalText');
+        
+        if (!modal || !modalTitle || !modalBody) {
+          console.error('Modal elements not found');
+          return;
+        }
+        
+        modalTitle.textContent = content.title;
+        modalBody.innerHTML = content.content;
+        if (modalText) {
+          modalText.style.display = 'none';
+        }
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Make sure closeModal is accessible
+    window.closeModal = function() {
+      const modal = document.getElementById('modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    };
+
+    // Make showLegalModal globally accessible
+    window.showLegalModal = showLegalModal;
+  </script>
+</body>
+</html>

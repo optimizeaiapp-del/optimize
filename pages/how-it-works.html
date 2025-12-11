@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works – OptimizeAI</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .page-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .page-header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      background: var(--color-bg-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-header p {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .step-section {
+      margin-bottom: 48px;
+      padding: 32px;
+      background: var(--color-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--color-bg-gradient);
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .step-section h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0 0 16px;
+      color: var(--color-text);
+    }
+    .step-section p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 32px;
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      transition: all 0.15s ease;
+    }
+    .back-link:hover {
+      color: var(--color-primary-hover);
+      background: rgba(99, 102, 241, 0.05);
+    }
+    .cta-box {
+      margin-top: 48px;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .cta-box h3 {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0 0 16px;
+      color: var(--color-text);
+    }
+    .cta-box p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      margin-bottom: 24px;
+    }
+    .cta-box a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 16px 32px;
+      background: var(--color-primary);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-md);
+    }
+    .cta-box a:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-primary);
+    }
+    .cta-box a:active {
+      transform: translateY(-1px);
+    }
+    .cta-box a svg {
+      width: 18px;
+      height: 18px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <a href="../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+        <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#logoGradient1)"/>
+          <path d="M2 17L12 22L22 17V12L12 17L2 12V17Z" fill="url(#logoGradient2)"/>
+          <defs>
+            <linearGradient id="logoGradient1" x1="2" y1="7" x2="22" y2="7" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#667eea"/>
+              <stop offset="100%" stop-color="#764ba2"/>
+            </linearGradient>
+            <linearGradient id="logoGradient2" x1="2" y1="14.5" x2="22" y2="14.5" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#764ba2"/>
+              <stop offset="100%" stop-color="#667eea"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>OptimizeAI</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-content">
+      <a href="../index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Home
+      </a>
+
+      <div class="page-header">
+        <h1>How It Works</h1>
+        <p>Optimize your assignments in just a few simple steps</p>
+      </div>
+
+      <div class="step-section">
+        <div class="step-number">1</div>
+        <h2>Select Your Teacher Profile</h2>
+        <p>Choose a teacher profile that matches your teacher's marking style, or create a custom profile. You can add additional notes about your teacher's preferences to help the AI provide more accurate feedback.</p>
+        <p>If your teacher isn't in our preset list, select "Other" and describe their marking style. You can also add their name so the analysis will say "[Teacher Name] is grading your work."</p>
+      </div>
+
+      <div class="step-section">
+        <div class="step-number">2</div>
+        <h2>Provide Assignment Details</h2>
+        <p>Enter your assignment instructions or upload a photo of the rubric. You can also upload images of your artwork or project if it's a visual assignment. The AI will analyze both text and images to understand the full context.</p>
+        <p>For text-based assignments, simply paste your instructions. For visual projects, upload a clear photo of your work.</p>
+      </div>
+
+      <div class="step-section">
+        <div class="step-number">3</div>
+        <h2>Submit Your Draft</h2>
+        <p>Paste your assignment draft or upload a photo of your work. The AI will analyze your submission based on your teacher's marking style and the assignment requirements.</p>
+        <p>You can provide either text or images—or both. The AI uses advanced vision capabilities to understand visual content, not just extract text.</p>
+      </div>
+
+      <div class="step-section">
+        <div class="step-number">4</div>
+        <h2>Get Analysis & Grade Estimate</h2>
+        <p>Receive detailed feedback organized by category, along with an estimated grade based on your teacher's marking style. The analysis will explain what you did well and where you can improve.</p>
+        <p>Click "Explain Results" to see a detailed breakdown of your grade and feedback.</p>
+      </div>
+
+      <div class="step-section">
+        <div class="step-number">5</div>
+        <h2>Generate Rewrite (Optional)</h2>
+        <p>If you want to improve your draft, use the "Generate Rewrite" feature. Choose your preferred output format (Essay, Paragraph, Bullet Points, or Custom) and adjust the rewrite strength:</p>
+        <ul style="margin: 16px 0; padding-left: 24px; color: var(--color-text-secondary);">
+          <li><strong>Light:</strong> Gentle polish while maintaining your original voice</li>
+          <li><strong>Balanced:</strong> Clear rewrite with improvements to structure and clarity</li>
+          <li><strong>Max:</strong> Full makeover with significant improvements</li>
+        </ul>
+      </div>
+
+      <div class="step-section">
+        <div class="step-number">6</div>
+        <h2>Refine with Feedback</h2>
+        <p>Not satisfied with the results? Provide feedback on what you'd like to change, and the AI will refine the analysis or rewrite based on your specific concerns.</p>
+        <p>You can iterate multiple times until you're happy with the output.</p>
+      </div>
+
+      <div class="cta-box">
+        <h3>Ready to optimize your assignments?</h3>
+        <p>Start using OptimizeAI today and see the difference personalized feedback can make.</p>
+        <a href="login.html">
+          Get Started
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 14L10 9L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li class="support-contact">
+            <span class="support-label">Having issues?</span>
+            <a href="contact.html" class="support-email">optimizeaiapp@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="academic-integrity.html">Academic Integrity</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> OptimizeAI. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

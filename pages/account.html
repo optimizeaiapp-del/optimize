@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account – OptimizeAI</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .account-container {
+      min-height: calc(100vh - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 60px;
+    }
+    .account-box {
+      width: 100%;
+      max-width: 600px;
+      background: var(--color-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-lg);
+      padding: 48px;
+    }
+    .account-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .account-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--color-bg-gradient);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 32px;
+      margin: 0 auto 20px;
+      box-shadow: var(--shadow-md);
+    }
+    .account-header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: var(--color-text);
+    }
+    .account-header p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+    .info-section {
+      margin-bottom: 32px;
+    }
+    .info-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .info-value {
+      display: block;
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-secondary);
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--color-text);
+      box-sizing: border-box;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 32px;
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      transition: all 0.15s ease;
+    }
+    .back-link:hover {
+      color: var(--color-primary-hover);
+      background: rgba(99, 102, 241, 0.05);
+    }
+    .password-display {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .password-toggle {
+      background: none;
+      border: none;
+      color: var(--color-primary);
+      cursor: pointer;
+      padding: 4px 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+    .password-toggle:hover {
+      color: var(--color-primary-hover);
+    }
+    .info-field-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .info-value {
+      flex: 1;
+    }
+    .edit-btn {
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .edit-btn:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+    .edit-btn:active {
+      transform: translateY(0);
+    }
+    .edit-btn.save {
+      background: #22c55e;
+    }
+    .edit-btn.save:hover {
+      background: #16a34a;
+    }
+    .edit-btn.cancel {
+      background: var(--color-text-secondary);
+    }
+    .edit-btn.cancel:hover {
+      background: #4b5563;
+    }
+    .edit-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .info-value.editable {
+      background: var(--color-bg);
+      border-color: var(--color-primary);
+      cursor: text;
+    }
+    .info-value.editable:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <a href="../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+        <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#logoGradient1)"/>
+          <path d="M2 17L12 22L22 17V12L12 17L2 12V17Z" fill="url(#logoGradient2)"/>
+          <defs>
+            <linearGradient id="logoGradient1" x1="2" y1="7" x2="22" y2="7" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#667eea"/>
+              <stop offset="100%" stop-color="#764ba2"/>
+            </linearGradient>
+            <linearGradient id="logoGradient2" x1="2" y1="14.5" x2="22" y2="14.5" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#764ba2"/>
+              <stop offset="100%" stop-color="#667eea"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>OptimizeAI</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+      <div id="authButtons" class="auth-buttons">
+        <a href="login.html" class="nav-link-login">Login</a>
+        <a href="login.html" class="nav-link-cta">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="account-container">
+      <div class="account-box">
+        <a href="../index.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Home
+        </a>
+
+        <div class="account-header">
+          <div class="account-avatar" id="accountAvatar">U</div>
+          <h1 id="accountName">User</h1>
+          <p id="accountEmail">user@example.com</p>
+        </div>
+
+        <div class="info-section">
+          <label class="info-label">Full Name</label>
+          <div class="info-field-wrapper">
+            <input type="text" class="info-value" id="displayName" value="Loading..." readonly>
+            <button class="edit-btn" id="editNameBtn">Edit</button>
+          </div>
+          <div class="edit-actions" id="nameActions" style="display: none;">
+            <button class="edit-btn save" id="saveNameBtn">Save</button>
+            <button class="edit-btn cancel" id="cancelNameBtn">Cancel</button>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <label class="info-label">Email Address</label>
+          <div class="info-field-wrapper">
+            <input type="email" class="info-value" id="displayEmail" value="Loading..." readonly>
+            <button class="edit-btn" id="editEmailBtn">Edit</button>
+          </div>
+          <div class="edit-actions" id="emailActions" style="display: none;">
+            <button class="edit-btn save" id="saveEmailBtn">Save</button>
+            <button class="edit-btn cancel" id="cancelEmailBtn">Cancel</button>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <label class="info-label">Password</label>
+          <div class="info-field-wrapper">
+            <div class="password-display" style="flex: 1;">
+              <input type="password" class="info-value" id="displayPassword" value="••••••••" readonly>
+              <button class="password-toggle" id="passwordToggle">Show</button>
+            </div>
+            <button class="edit-btn" id="editPasswordBtn">Edit</button>
+          </div>
+          <div class="edit-actions" id="passwordActions" style="display: none;">
+            <button class="edit-btn save" id="savePasswordBtn">Save</button>
+            <button class="edit-btn cancel" id="cancelPasswordBtn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li class="support-contact">
+            <span class="support-label">Having issues?</span>
+            <a href="contact.html" class="support-email">optimizeaiapp@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="academic-integrity.html">Academic Integrity</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> OptimizeAI. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Supabase Client Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Check if user is logged in with Supabase
+    async function checkAuth() {
+      try {
+        const sessionStr = localStorage.getItem('supabase_session');
+        if (!sessionStr) {
+          window.location.href = 'login.html';
+          return;
+        }
+        
+        const session = JSON.parse(sessionStr);
+        // Verify session is still valid
+        const { data: { user }, error } = await supabaseClient.auth.getUser();
+        
+        if (error || !user) {
+          // Session invalid, redirect to login
+          localStorage.removeItem('supabase_session');
+          localStorage.removeItem('userLoggedIn');
+          localStorage.removeItem('userEmail');
+          localStorage.removeItem('userName');
+          window.location.href = 'login.html';
+          return;
+        }
+        
+        const authButtons = document.getElementById('authButtons');
+        if (authButtons) authButtons.style.display = 'none';
+      } catch (error) {
+        console.error('Auth check error:', error);
+        window.location.href = 'login.html';
+      }
+    }
+
+    // Load user information from Supabase
+    async function loadUserInfo() {
+      try {
+        const { data: { user }, error } = await supabaseClient.auth.getUser();
+        
+        if (error || !user) {
+          window.location.href = 'login.html';
+          return;
+        }
+        
+        const fullName = user.user_metadata?.full_name || user.email?.split('@')[0] || 'User';
+        const userEmail = user.email || 'user@example.com';
+        
+        // Note: We don't store passwords in Supabase, so we'll show a placeholder
+        document.getElementById('accountName').textContent = fullName;
+        document.getElementById('accountEmail').textContent = userEmail;
+        document.getElementById('displayName').value = fullName;
+        document.getElementById('displayEmail').value = userEmail;
+        document.getElementById('displayPassword').value = '••••••••';
+        document.getElementById('displayPassword').setAttribute('data-password', '');
+        document.getElementById('displayPassword').setAttribute('data-original', '');
+        
+        // Set avatar initials
+        const initials = fullName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        const avatar = document.getElementById('accountAvatar');
+        if (avatar) avatar.textContent = initials;
+        
+        // Update localStorage for compatibility
+        localStorage.setItem('userLoggedIn', 'true');
+        localStorage.setItem('userEmail', userEmail);
+        localStorage.setItem('userName', fullName);
+      } catch (error) {
+        console.error('Error loading user info:', error);
+        window.location.href = 'login.html';
+      }
+    }
+
+    // Edit functionality for Name
+    let originalName = '';
+    document.getElementById('editNameBtn').addEventListener('click', () => {
+      const nameInput = document.getElementById('displayName');
+      originalName = nameInput.value;
+      nameInput.removeAttribute('readonly');
+      nameInput.classList.add('editable');
+      nameInput.focus();
+      document.getElementById('editNameBtn').style.display = 'none';
+      document.getElementById('nameActions').style.display = 'flex';
+    });
+
+    document.getElementById('saveNameBtn').addEventListener('click', async () => {
+      const nameInput = document.getElementById('displayName');
+      const newName = nameInput.value.trim();
+      if (!newName) {
+        alert('Name cannot be empty');
+        return;
+      }
+      
+      try {
+        // Update user metadata in Supabase
+        const { error } = await supabaseClient.auth.updateUser({
+          data: { full_name: newName }
+        });
+        
+        if (error) throw error;
+        
+        localStorage.setItem('userName', newName);
+        nameInput.setAttribute('readonly', 'readonly');
+        nameInput.classList.remove('editable');
+        document.getElementById('editNameBtn').style.display = 'block';
+        document.getElementById('nameActions').style.display = 'none';
+        document.getElementById('accountName').textContent = newName;
+        // Update profile initials
+        const initials = newName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        if (document.getElementById('profileInitials')) {
+          document.getElementById('profileInitials').textContent = initials;
+        }
+        if (document.getElementById('accountAvatar')) {
+          document.getElementById('accountAvatar').textContent = initials;
+        }
+      } catch (error) {
+        alert('Failed to update name: ' + error.message);
+      }
+    });
+
+    document.getElementById('cancelNameBtn').addEventListener('click', () => {
+      const nameInput = document.getElementById('displayName');
+      nameInput.value = originalName;
+      nameInput.setAttribute('readonly', 'readonly');
+      nameInput.classList.remove('editable');
+      document.getElementById('editNameBtn').style.display = 'block';
+      document.getElementById('nameActions').style.display = 'none';
+    });
+
+    // Edit functionality for Email
+    let originalEmail = '';
+    document.getElementById('editEmailBtn').addEventListener('click', () => {
+      const emailInput = document.getElementById('displayEmail');
+      originalEmail = emailInput.value;
+      emailInput.removeAttribute('readonly');
+      emailInput.classList.add('editable');
+      emailInput.focus();
+      document.getElementById('editEmailBtn').style.display = 'none';
+      document.getElementById('emailActions').style.display = 'flex';
+    });
+
+    document.getElementById('saveEmailBtn').addEventListener('click', async () => {
+      const emailInput = document.getElementById('displayEmail');
+      const newEmail = emailInput.value.trim();
+      if (!newEmail || !newEmail.includes('@')) {
+        alert('Please enter a valid email address');
+        return;
+      }
+      
+      try {
+        // Update email in Supabase
+        const { error } = await supabaseClient.auth.updateUser({
+          email: newEmail
+        });
+        
+        if (error) throw error;
+        
+        localStorage.setItem('userEmail', newEmail);
+        emailInput.setAttribute('readonly', 'readonly');
+        emailInput.classList.remove('editable');
+        document.getElementById('editEmailBtn').style.display = 'block';
+        document.getElementById('emailActions').style.display = 'none';
+        document.getElementById('accountEmail').textContent = newEmail;
+        alert('Email update requested. Please check your new email for a confirmation link.');
+      } catch (error) {
+        alert('Failed to update email: ' + error.message);
+      }
+    });
+
+    document.getElementById('cancelEmailBtn').addEventListener('click', () => {
+      const emailInput = document.getElementById('displayEmail');
+      emailInput.value = originalEmail;
+      emailInput.setAttribute('readonly', 'readonly');
+      emailInput.classList.remove('editable');
+      document.getElementById('editEmailBtn').style.display = 'block';
+      document.getElementById('emailActions').style.display = 'none';
+    });
+
+    // Edit functionality for Password
+    let originalPassword = '';
+    document.getElementById('editPasswordBtn').addEventListener('click', () => {
+      const passwordInput = document.getElementById('displayPassword');
+      originalPassword = passwordInput.getAttribute('data-password') || '';
+      passwordInput.type = 'password';
+      passwordInput.value = originalPassword;
+      passwordInput.removeAttribute('readonly');
+      passwordInput.classList.add('editable');
+      passwordInput.focus();
+      document.getElementById('passwordToggle').style.display = 'none';
+      document.getElementById('editPasswordBtn').style.display = 'none';
+      document.getElementById('passwordActions').style.display = 'flex';
+    });
+
+    document.getElementById('savePasswordBtn').addEventListener('click', async () => {
+      const passwordInput = document.getElementById('displayPassword');
+      const newPassword = passwordInput.value.trim();
+      if (!newPassword || newPassword.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return;
+      }
+      
+      try {
+        // Update password in Supabase
+        const { error } = await supabaseClient.auth.updateUser({
+          password: newPassword
+        });
+        
+        if (error) throw error;
+        
+        passwordInput.type = 'password';
+        passwordInput.value = '••••••••';
+        passwordInput.setAttribute('readonly', 'readonly');
+        passwordInput.setAttribute('data-password', '');
+        passwordInput.classList.remove('editable');
+        document.getElementById('passwordToggle').style.display = 'block';
+        document.getElementById('passwordToggle').textContent = 'Show';
+        document.getElementById('editPasswordBtn').style.display = 'block';
+        document.getElementById('passwordActions').style.display = 'none';
+        alert('Password updated successfully!');
+      } catch (error) {
+        alert('Failed to update password: ' + error.message);
+      }
+    });
+
+    document.getElementById('cancelPasswordBtn').addEventListener('click', () => {
+      const passwordInput = document.getElementById('displayPassword');
+      passwordInput.type = 'password';
+      passwordInput.value = '••••••••';
+      passwordInput.setAttribute('readonly', 'readonly');
+      passwordInput.classList.remove('editable');
+      document.getElementById('passwordToggle').style.display = 'block';
+      document.getElementById('passwordToggle').textContent = 'Show';
+      document.getElementById('editPasswordBtn').style.display = 'block';
+      document.getElementById('passwordActions').style.display = 'none';
+    });
+
+    // Password toggle
+    const passwordToggle = document.getElementById('passwordToggle');
+    const displayPassword = document.getElementById('displayPassword');
+    
+    if (passwordToggle) {
+      passwordToggle.addEventListener('click', () => {
+        if (displayPassword.hasAttribute('readonly')) {
+          const isShowing = displayPassword.type === 'text';
+          if (isShowing) {
+            displayPassword.type = 'password';
+            displayPassword.value = '••••••••';
+            passwordToggle.textContent = 'Show';
+          } else {
+            const actualPassword = displayPassword.getAttribute('data-password') || '';
+            displayPassword.type = 'text';
+            displayPassword.value = actualPassword;
+            passwordToggle.textContent = 'Hide';
+          }
+        }
+      });
+    }
+
+    // (Profile dropdown & logout feature removed)
+
+    // Initialize
+    checkAuth();
+    loadUserInfo();
+  </script>
+</body>
+</html>
+

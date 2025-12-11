@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – OptimizeAI</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .page-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .page-header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      background: var(--color-bg-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-header p {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-form {
+      background: var(--color-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--color-text);
+      outline: none;
+      transition: all 0.15s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--color-text-muted);
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .submit-btn:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+    .success-message {
+      display: none;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.05));
+      border-radius: var(--radius-md);
+      border-left: 4px solid #22c55e;
+      margin-bottom: 24px;
+      color: #16a34a;
+      font-weight: 500;
+    }
+    .success-message.show {
+      display: block;
+    }
+    .error-message {
+      display: none;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
+      border-radius: var(--radius-md);
+      border-left: 4px solid #ef4444;
+      margin-bottom: 24px;
+      color: #dc2626;
+      font-weight: 500;
+    }
+    .error-message.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <a href="../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+        <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#logoGradient1)"/>
+          <path d="M2 17L12 22L22 17V12L12 17L2 12V17Z" fill="url(#logoGradient2)"/>
+          <defs>
+            <linearGradient id="logoGradient1" x1="2" y1="7" x2="22" y2="7" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#667eea"/>
+              <stop offset="100%" stop-color="#764ba2"/>
+            </linearGradient>
+            <linearGradient id="logoGradient2" x1="2" y1="14.5" x2="22" y2="14.5" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#764ba2"/>
+              <stop offset="100%" stop-color="#667eea"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>OptimizeAI</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-content">
+      <div class="page-header">
+        <h1>Contact Us</h1>
+        <p>Have a question or need help? Send us a message and we'll get back to you as soon as possible.</p>
+      </div>
+
+      <div class="contact-form">
+        <div class="success-message" id="successMessage">
+          Thank you for your message! We'll get back to you soon.
+        </div>
+        <div class="error-message" id="errorMessage"></div>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span>Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 14L14 2M14 2H6M14 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li class="support-contact">
+            <span class="support-label">Having issues?</span>
+            <a href="contact.html" class="support-email">optimizeaiapp@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#" onclick="event.preventDefault(); showLegalModal('terms'); return false;">Terms of Service</a></li>
+          <li><a href="#" onclick="event.preventDefault(); showLegalModal('privacy'); return false;">Privacy Policy</a></li>
+          <li><a href="#" onclick="event.preventDefault(); showLegalModal('integrity'); return false;">Academic Integrity</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> OptimizeAI. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal" style="display: none;">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <button class="modal-close" onclick="closeModal()">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <p id="modalText"></p>
+      </div>
+      <div class="modal-footer">
+        <button onclick="closeModal()" class="modal-btn">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Legal modal content
+    const legalContent = {
+      terms: {
+        title: 'Terms of Service',
+        content: `
+          <p><strong>Last updated: January 2025</strong></p>
+          <h4>1. Acceptance of Terms</h4>
+          <p>By accessing and using OptimizeAI, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+          <h4>2. Description of Service</h4>
+          <p>OptimizeAI is an AI-powered tool designed to help students improve their academic assignments by providing personalized feedback and analysis based on teacher-specific marking styles.</p>
+          <h4>3. Academic Integrity</h4>
+          <p>Users are solely responsible for ensuring their use of OptimizeAI complies with their institution's academic integrity policies. OptimizeAI is designed to help students learn and improve, not to bypass the learning process.</p>
+          <h4>4. User Responsibilities</h4>
+          <p>Users agree to use the service only for lawful purposes, not to violate any academic integrity policies, and to provide accurate information when using the service.</p>
+          <h4>5. Limitation of Liability</h4>
+          <p>OptimizeAI is provided "as is" without warranties of any kind. We are not responsible for the accuracy of grade estimates, academic consequences, or any errors in the analysis.</p>
+          <h4>6. Contact</h4>
+          <p>If you have questions about these Terms of Service, please contact us at <a href="mailto:optimizeaiapp@gmail.com" style="color: var(--color-primary);">optimizeaiapp@gmail.com</a>.</p>
+        `
+      },
+      privacy: {
+        title: 'Privacy Policy',
+        content: `
+          <p><strong>Last updated: January 2025</strong></p>
+          <p><strong>🔒 Your privacy is important to us.</strong> We respect your privacy and are committed to protecting your personal information. Your assignments and data are processed securely and are not stored or shared.</p>
+          <h4>1. Information We Collect</h4>
+          <p>When you use OptimizeAI, you may provide assignment instructions, drafts (text or images), teacher profile information, and feedback requests.</p>
+          <h4>2. How We Use Your Information</h4>
+          <p>We use the information you provide solely to process your assignments, generate analysis, provide feedback, and improve our service. We do not use your information for marketing purposes or share it with third parties.</p>
+          <h4>3. Data Storage and Retention</h4>
+          <p><strong>Important:</strong> Your assignments and personal content are <strong>not stored</strong> on our servers. Data is processed in real-time to generate your analysis and is then discarded.</p>
+          <h4>4. Data Security</h4>
+          <p>We implement appropriate technical and organizational measures to protect your information, including secure data transmission using encryption and processing through secure AI services.</p>
+          <h4>5. Contact Us</h4>
+          <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:optimizeaiapp@gmail.com" style="color: var(--color-primary);">optimizeaiapp@gmail.com</a>.</p>
+        `
+      },
+      integrity: {
+        title: 'Academic Integrity',
+        content: `
+          <p><strong>⚠️ IMPORTANT:</strong> Before using OptimizeAI, you must check your institution's academic integrity policies regarding AI assistance. Different schools have different rules, and it is your responsibility to comply with them.</p>
+          <h4>What is Academic Integrity?</h4>
+          <p>Academic integrity means being honest and ethical in your academic work. It involves submitting work that is your own, following your institution's rules about collaboration and assistance, and being transparent about the help you receive.</p>
+          <h4>OptimizeAI as a Learning Tool</h4>
+          <p>OptimizeAI is designed to help you learn and improve your writing skills. It's not meant to replace your own work or thinking. Use feedback to learn, maintain your voice, understand the content, and follow your school's rules.</p>
+          <h4>Best Practices</h4>
+          <p>Always check policies first, use for learning, be transparent if required, don't submit directly without review, and maintain academic honesty. The goal is to learn and grow, not replace your own effort.</p>
+          <h4>Our Commitment</h4>
+          <p>OptimizeAI is committed to supporting academic integrity. We provide this tool to help students learn and improve, not to facilitate academic dishonesty.</p>
+          <h4>Questions?</h4>
+          <p>If you have questions about academic integrity and using OptimizeAI, please contact us at <a href="mailto:optimizeaiapp@gmail.com" style="color: var(--color-primary);">optimizeaiapp@gmail.com</a>.</p>
+        `
+      }
+    };
+
+    function showLegalModal(type) {
+      const content = legalContent[type];
+      if (content) {
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        
+        modalTitle.textContent = content.title;
+        modalBody.innerHTML = content.content;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      const submitBtn = document.querySelector('.submit-btn');
+      const submitBtnText = submitBtn.querySelector('span');
+      const originalText = submitBtnText.textContent;
+      
+      // Hide previous messages
+      successMessage.classList.remove('show');
+      errorMessage.classList.remove('show');
+      
+      // Validate fields
+      if (!name || !email || !message) {
+        errorMessage.textContent = 'Please fill in all fields.';
+        errorMessage.classList.add('show');
+        return;
+      }
+      
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errorMessage.textContent = 'Please enter a valid email address.';
+        errorMessage.classList.add('show');
+        return;
+      }
+      
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtnText.textContent = 'Sending...';
+      submitBtn.style.opacity = '0.7';
+      submitBtn.style.cursor = 'not-allowed';
+      
+      try {
+        // Send to backend
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message
+          })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          // Show success message
+          successMessage.classList.add('show');
+          errorMessage.classList.remove('show');
+          document.getElementById('contactForm').reset();
+          
+          // Hide success message after 5 seconds
+          setTimeout(() => {
+            successMessage.classList.remove('show');
+          }, 5000);
+        } else {
+          // Show error message
+          errorMessage.textContent = data.error || 'Failed to send message. Please try again later.';
+          errorMessage.classList.add('show');
+        }
+      } catch (error) {
+        // Show error message
+        errorMessage.textContent = 'Network error. Please check your connection and try again.';
+        errorMessage.classList.add('show');
+      } finally {
+        // Re-enable button
+        submitBtn.disabled = false;
+        submitBtnText.textContent = originalText;
+        submitBtn.style.opacity = '1';
+        submitBtn.style.cursor = 'pointer';
+      }
+    });
+  </script>
+</body>
+</html>
